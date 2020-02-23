@@ -1,4 +1,4 @@
-
+package uk.ac.bris.cs.gamekit.graph;
 
 
 import java.util.ArrayList;
@@ -7,9 +7,12 @@ import java.util.Collection;
 import java.util.List;
 
 
+import uk.ac.bris.cs.gamekit.graph.Edge;
+import uk.ac.bris.cs.gamekit.graph.Graph;
+import uk.ac.bris.cs.gamekit.graph.Node;
 
 
-
+import uk.ac.bris.cs.scotlandyard.model.Transport;
 
 public class Dijkstras {
 	
@@ -41,9 +44,9 @@ public class Dijkstras {
 		/*--REMEMBER-- Each  Node contains the shortest route/path to that particular node
 		 * and the distance of this route
 		 */
-		// loops through every node in the graph
+		//loops through every node in the graph
 		// and would traditionally set the distance travelled of the shortest path 
-		// to infinity but in this case I will set it to the number of nodes in the graph + 1
+		// to infinity but in this case i will set it to the number of nodes in the graph +1
 		// as a shortest path will never exceed this value
 		for(Node<Integer> currentNode : graph.getNodes()){
 			
@@ -195,24 +198,6 @@ public class Dijkstras {
 		computeDijkstrasAlgorithm(graph,source,destination);
 		return destination.getRouteOfNodes();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }
