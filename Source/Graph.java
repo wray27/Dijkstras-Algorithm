@@ -71,6 +71,14 @@ public interface Graph<V, D> {
 	Collection<Edge<V, D>> getEdgesTo(Node<V> destination);
 
 	/**
+	 * Finds the edge connecting the source and destination node
+	 * @param source the source node
+	 * @param destination the destination node
+	 * @return the edge connecting two nodes in the graph; returns Null if no such edge
+	 */
+	Edge<V, D> getEdge(Node<V> source, Node<V> destination);
+
+	/**
 	 * Tests whether this graph has any nodes
 	 * 
 	 * @return true if empty

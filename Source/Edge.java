@@ -31,7 +31,7 @@ public class Edge<N, D> implements Serializable {
 		return destination;
 	}
 
-	public D data() {
+	public D Data() {
 		return data;
 	}
 

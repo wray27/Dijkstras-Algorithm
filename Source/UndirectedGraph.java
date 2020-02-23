@@ -84,6 +84,20 @@ public final class UndirectedGraph<V, D> extends AbstractGraph<V, D> implements 
 	}
 
 	@Override
+	Edge<V, D> getEdge(Node<V> source, Node<V> destination) {
+		Collection<Edge<V,D>> edges = getEdgesFrom(source);
+		Edge<V,D> edge = null;
+
+		for(Edge<V,D> temp : edges){
+			if(temp.destination.equals(destination)){
+				edge = temp;
+				break;
+			}
+		}
+		return edge;
+	}
+
+	@Override
 	public Collection<Edge<V, D>> getEdges() {
 		return Collections.unmodifiableList(edges);
 	}

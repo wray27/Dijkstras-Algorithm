@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
-
 
 import Edge;
 import Graph;
@@ -17,15 +15,15 @@ public class Dijkstras {
 	 * and immutabillity by returning an unmodifiable list
 	 */
 	
-	private static void computeDijkstrasAlgorithm(Graph<V,D> graph, Node<Integer> sourceNode,Node<Integer> destinationNode){		
+	private static void computeDijkstrasAlgorithm(Graph<V,D> graph, Node<V> sourceNode,Node<V> destinationNode){		
 		
 		//The list of  all nodes in the graph
-		List<Node<Integer>> allNodesToBeVisited = new ArrayList<>();
+		List<Node<V>> allNodesToBeVisited = new ArrayList<>();
 		
 		//The best node to go next 
 		// as in the node with smallest weight
 		//can be considered the current node
-		Node<Integer> bestNode;
+		Node<V> bestNode;
 				
 		/*--REMEMBER-- Each  Node contains the shortest route/path to that particular node
 		 * and the distance of this route
@@ -34,7 +32,7 @@ public class Dijkstras {
 		// and would traditionally set the distance travelled of the shortest path 
 		// to infinity but in this case i will set it to the number of nodes in the graph +1
 		// as a shortest path will never exceed this value
-		for(Node<Integer> currentNode : graph.getNodes()){
+		for(Node<V> currentNode : graph.getNodes()){
 			
 			currentNode.setDistanceTravelled(Integer.MAX_VALUE);
 			
@@ -47,7 +45,6 @@ public class Dijkstras {
 		//sets the source Node's distance travelled to 0 
 		//essentially so algorithm knows where to start 
 		sourceNode.setDistanceTravelled(0);
-		
 		
 		//used to help find the bestNode to travel to next in the graph
 		// and then visit it
@@ -70,15 +67,15 @@ public class Dijkstras {
 
 	//this function is used to split up the code 
 	//finds the node with the smallest distance to travel to next
-	private static Node<Integer> extractNodeWithSmallestDist(List<Node<V>>  listOfNodes){
+	private static Node<V> extractNodeWithSmallestDist(List<Node<V>>  listOfNodes){
 		
-		Node <Integer> bestNode = new Node<Integer>(0);
+		Node <V> bestNode = new Node<V>(0);
 		int lowestDist = Integer.MAX_VALUE;
 		
 		//loops through all the nodes in a given list
 		//to find the node with the smallest distance travelled
-		for (Node<Integer> currentNode :listOfNodes ){
-			if(currentNode.getDistanceTravelled() <lowestDist ){
+		for (Node<V> currentNode :listOfNodes ){
+			if(currentNode.getDistanceTravelled() < lowestDist ){
 				lowestDist = currentNode.getDistanceTravelled();
 				bestNode = currentNode;
 			}
@@ -88,12 +85,10 @@ public class Dijkstras {
 	
 	private static  void visit(Node<V> node, Graph<V,D> graph){
 		
-		
 		//contains the list of connected nodes to the one passed in 
-		List<Node<Integer>> adjacentNodes = getAdjacentNodes(node,graph);
+		List<Node<V>> adjacentNodes = getAdjacentNodes(node,graph);
 		
-		//as graph is undirected the cost is 1 and will always be 1
-		final int cost = 1;
+		int cost = 0;
 		
 		/*The method has already got all of the connected nodes from 
 		 * the one initially passed in
@@ -102,7 +97,7 @@ public class Dijkstras {
 		 */
 		
 		//take your time understanding this probably the most complex part
-		for (Node<Integer> tempNode : adjacentNodes){
+		for (Node<V> tempNode : adjacentNodes){
 			
 			if(tempNode.getDistanceTravelled() > tempNode.getDistanceTravelled() + cost){
 				//if the travelling to this node is shorter than the distance already
@@ -112,65 +107,45 @@ public class Dijkstras {
 				//and we want to clear the previous shortest path to make a new one
 				tempNode.clearRouteOfNodes();
 				
-				
 				//now we take the node we are visiting
-				//the one we  have just passed in and we  loop through
-				// the shortest path it takes to get to that node
+				//the one we have just passed in and we loop through
+				//the shortest path it takes to get to that node
 				//adding each node in its list to the current node's shortest path 
-				for (int noNodes = 0;noNodes<node.getRouteOfNodes().size(); noNodes ++){
+				for (int noNodes = 0; noNodes<node.getRouteOfNodes().size(); noNodes ++){
 					tempNode.addToRouteOfNodes(node.getRouteOfNodes().get(noNodes));
 				}
 				
 				// we cannot forget to add the node we are actually visiting as well
-				tempNode.addToRouteOfNodes(node);
-				
+				tempNode.addToRouteOfNodes(node);			
 			}
-		}
-		
+		}	
 	}
 	
-	
-	
-	
-	
-	
-	private static List<Node<Integer>> getAdjacentNodes(Node<Integer> sourceNode , Graph<Integer,Transport> graph){
+	private static List<Node<V>> getAdjacentNodes(Node<V> sourceNode , Graph<V,D> graph){
 		//refers to the all the edges connected to the source node
-		Collection<Edge<Integer,Transport>>  adjacentEdges = graph.getEdgesFrom(sourceNode);
+		Collection<Edge<V,D>>  adjacentEdges = graph.getEdgesFrom(sourceNode);
 				
 		//contains the list of connected nodes to the one passed in 
-		List<Node<Integer>> adjacentNodes = new ArrayList<>();
+		List<Node<V>> adjacentNodes = new ArrayList<>();
 		
 		//adds all of the nodes attached to the node passed to it
-		for (Edge<Integer,Transport> edge : adjacentEdges){
+		for (Edge<V,D> edge : adjacentEdges){
 		      adjacentNodes.add(edge.destination());
-		}
-		
-		 
-		//removes all boat edges as detectives cannot traverse these
-		for (Edge<Integer,Transport> edge : adjacentEdges){
-			if (edge.data().equals(Transport.Boat) ){
-				adjacentEdges.remove(edge);
-			}
 		}
 		
 		return adjacentNodes;
 	}
-	
-	//These last two methods are tidy up functions
-	//they are the only ones with public access
-	
+
 	//quick function which returns the smallest distance
-	public static int shortestDistBetweenTwoNodes(Graph<Integer,Transport> graph  ,Node<Integer> source,Node<Integer> destination){
+	public static int shortestDistBetweenTwoNodes(Graph<V,D> graph  ,Node<V> source,Node<V> destination){
 		computeDijkstrasAlgorithm(graph,source,destination);
 		return destination.getDistanceTravelled();
 	}
 	
 	//returns the shortest route between two nodes in the form of a list of nodes
-	public static List<Node<Integer>> shortestRouteBetweenTwoNodes(Graph<Integer,Transport> graph  ,Node<Integer> source,Node<Integer> destination){
+	public static List<Node<V>> shortestRouteBetweenTwoNodes(Graph<V,D> graph  ,Node<V> source,Node<V> destination){
 		computeDijkstrasAlgorithm(graph,source,destination);
 		return destination.getRouteOfNodes();
 	}
-
 	
 }

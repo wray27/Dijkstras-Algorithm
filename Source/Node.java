@@ -43,7 +43,6 @@ public final class Node<V> implements Serializable{
 		
 	}
 	
-	
 	public Node(V value) {
 		this.value = Objects.requireNonNull(value);
 	}
