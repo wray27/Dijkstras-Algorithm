@@ -1,5 +1,3 @@
-package uk.ac.bris.cs.gamekit.graph;
-
 import java.util.Collection;
 import java.util.List;
 

@@ -1,6 +1,3 @@
-package uk.ac.bris.cs.gamekit.graph;
-
-
 import java.util.ArrayList;
 import java.util.Collection;
 

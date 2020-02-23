@@ -1,5 +1,3 @@
-package uk.ac.bris.cs.gamekit.graph;
-
 import java.io.Serializable;
 import java.util.Objects;
 

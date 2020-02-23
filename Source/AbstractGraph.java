@@ -1,5 +1,3 @@
-package uk.ac.bris.cs.gamekit.graph;
-
 import java.util.Objects;
 
 public abstract class AbstractGraph<V, D> implements Graph<V, D> {
