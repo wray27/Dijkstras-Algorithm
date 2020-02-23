@@ -4,15 +4,11 @@ import java.util.Collection;
 import java.util.List;
 
 
-import uk.ac.bris.cs.gamekit.graph.Edge;
-import uk.ac.bris.cs.gamekit.graph.Graph;
-import uk.ac.bris.cs.gamekit.graph.Node;
-
-
-import uk.ac.bris.cs.scotlandyard.model.Transport;
+import Edge;
+import Graph;
+import Node;
 
 public class Dijkstras {
-	
 	
 	/*--IMPORTANT-- Each  Node contains the shortest route/path to that particular node
 	 * and the distance of this route. Look at the changes to the Node Class to see
@@ -21,23 +17,16 @@ public class Dijkstras {
 	 * and immutabillity by returning an unmodifiable list
 	 */
 	
-	
-	private static void computeDijkstrasAlgorithm(Graph<Integer,Transport> graph, Node<Integer> sourceNode,Node<Integer> destinationNode){
-		
+	private static void computeDijkstrasAlgorithm(Graph<V,D> graph, Node<Integer> sourceNode,Node<Integer> destinationNode){		
 		
 		//The list of  all nodes in the graph
 		List<Node<Integer>> allNodesToBeVisited = new ArrayList<>();
-		
-		
-		
 		
 		//The best node to go next 
 		// as in the node with smallest weight
 		//can be considered the current node
 		Node<Integer> bestNode;
-		
-		
-		
+				
 		/*--REMEMBER-- Each  Node contains the shortest route/path to that particular node
 		 * and the distance of this route
 		 */
@@ -47,7 +36,7 @@ public class Dijkstras {
 		// as a shortest path will never exceed this value
 		for(Node<Integer> currentNode : graph.getNodes()){
 			
-			currentNode.setDistanceTravelled(graph.size()+1);
+			currentNode.setDistanceTravelled(Integer.MAX_VALUE);
 			
 			//clears the shortest route for all nodes inside of graph
 			currentNode.clearRouteOfNodes();
@@ -76,28 +65,15 @@ public class Dijkstras {
 		//reference to the Destination Nodes Route attribute ( which is just a list)
 		// the actual shortest distance will be the  size of the list
 		// or the field distance travelled, which is also a field in Destination Node
-		
-		
-		
-		
-		
 				
 	}
 
-
-
-
-
-
-	
-	
 	//this function is used to split up the code 
 	//finds the node with the smallest distance to travel to next
-	private static Node<Integer> extractNodeWithSmallestDist(List<Node<Integer>>  listOfNodes){
+	private static Node<Integer> extractNodeWithSmallestDist(List<Node<V>>  listOfNodes){
 		
 		Node <Integer> bestNode = new Node<Integer>(0);
-		//this part here needs to be changed
-		int lowestDist = 100000;
+		int lowestDist = Integer.MAX_VALUE;
 		
 		//loops through all the nodes in a given list
 		//to find the node with the smallest distance travelled
@@ -110,7 +86,7 @@ public class Dijkstras {
 		return bestNode;
 	}
 	
-	private static  void visit(Node<Integer> node, Graph<Integer,Transport> graph){
+	private static  void visit(Node<V> node, Graph<V,D> graph){
 		
 		
 		//contains the list of connected nodes to the one passed in 
