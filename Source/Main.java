@@ -1,8 +1,8 @@
 import GraphPack.*;
 
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.lang.String;
+import java.util.Collection.*;
 import java.util.List;
 
 public class Main {
@@ -11,7 +11,7 @@ public class Main {
   }
 
   // function to retrive the user input of two strings from the terminal stored in a list
-  private ArrayList<String> getUserInput(){
+  private static ArrayList<String> getUserInput(){
     
     // retrieves the name of the nodes from the user 
     System.out.println("Please enter the name of the starting node:");
@@ -27,7 +27,7 @@ public class Main {
     
     return nodes;
   }
-  private void displayAnswers(List<String> nodes, UndirectedGraph<String, Integer> graph){
+  private static void displayAnswer(List<String> nodes, UndirectedGraph<String, Integer> graph){
     
     // finds the node objects in the graph from the user input
     Node<String> source = graph.getNode(nodes.get(0));
@@ -36,15 +36,14 @@ public class Main {
     // runs the dijkstras algortihm code to find shortest route and its cost 
     int cost = -1;
     cost = Dijkstras.shortestDistanceBetweenTwoNodes(graph, source, destination);
-    List<<Node<String>> routes = new ArrayList<<Node<String>>();
-    routes = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
+    List<<Node<String>> routes = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
    
     
   }
 
   // Example 1:
   // A simple graph used to show the algorithm 
-  private UndirectedGraph<String, Integer> simpleGraph(){
+  private static UndirectedGraph<String, Integer> simpleGraph(){
     
     // instantiating a new undirected graph
     UndirectedGraph<String, Integer> graph = new UndirectedGraph<String, Integer>();
