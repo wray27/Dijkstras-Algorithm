@@ -36,7 +36,7 @@ public class Main {
     // runs the dijkstras algortihm code to find shortest route and its cost 
     int cost = -1;
     cost = Dijkstras.shortestDistanceBetweenTwoNodes(graph, source, destination);
-    List<<Node<String>> routes = new ArrayList<>();
+    List<<Node<String>> routes = new ArrayList<<Node<String>>();
     routes = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
    
     
