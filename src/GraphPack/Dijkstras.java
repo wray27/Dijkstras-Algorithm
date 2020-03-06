@@ -100,7 +100,7 @@ public class Dijkstras {
 			Edge<String, Integer> edge = graph.getEdge(node, tempNode);
 			cost = edge.Data();
 
-			if(tempNode.getDistanceTravelled() > node.getDistanceTravelled() + cost){
+			if(tempNode.getDistanceTravelled() > (node.getDistanceTravelled() + cost)){
 				//if travelling to this node is shorter than the distance already
 				//travelled to get to this node we want to update the distance travelled
 				tempNode.setDistanceTravelled(node.getDistanceTravelled() + cost);
@@ -139,7 +139,7 @@ public class Dijkstras {
 
 	//quick function which returns the smallest distance
 	public static int shortestDistBetweenTwoNodes(Graph<String, Integer> graph  ,Node<String> source,Node<String> destination){
-		computeDijkstrasAlgorithm(graph,source,destination);
+		computeDijkstrasAlgorithm(graph, source, destination);
 		return destination.getDistanceTravelled();
 	}
 	
