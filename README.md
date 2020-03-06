@@ -36,13 +36,13 @@ $ java Main -g 1
 ### Example1: simpleGraph
 
 <p align="left">
-  <img width="360" height="250" src="./diagrams/simpleGraph.png">
+  <img width="300" height="250" src="./diagrams/simpleGraph.png">
 </p>
 
 ### Example2: mediumGraph 
 
 <p align="left">
-  <img width="360" height="250" src="./diagrams/mediumGraph.png">
+  <img width="300" height="250" src="./diagrams/mediumGraph.png">
 </p>
 
 ### Example3: hardGraph
