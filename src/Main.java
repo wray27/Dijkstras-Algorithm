@@ -179,7 +179,7 @@ public class Main {
         Edge<String, Integer> hToI = new Edge<String, Integer>(H, I, 2);
         graph.addEdge(hToI);
         Edge<String, Integer> gToI = new Edge<String, Integer>(G, I, 4);
-        graph.addEdge(fToH);
+        graph.addEdge(gToI);
         Edge<String, Integer> gToH = new Edge<String, Integer>(G, H, 8);
         graph.addEdge(gToH);
 

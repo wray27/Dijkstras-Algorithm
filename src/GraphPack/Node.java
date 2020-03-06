@@ -23,8 +23,6 @@ public final class Node<V> implements Serializable{
 	//distance travelled from this node
 	private int distanceTravelled = 0;
 	
-	
-	
 	public int getDistanceTravelled(){
 		return distanceTravelled;
 	}
