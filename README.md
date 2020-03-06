@@ -1,10 +1,12 @@
 # Dijkstra's Algorithm
 
+![](./diagrams/AtoI.gif)
+
 ## Background
 
 In 1959 Edsger W. Dijkstra published a paper with an algorithm to solve the travelling salesman problem [[1]](#1). Given two nodes within an undirected graph (with non-negative weights) find the shortest distance between them.
 
-This repository contains code with 
+This repository contains an implementation of the algorithm written in Java runs in O(|N|^2) time and uses space O(|N| +2|E|).
 
 
 ## References
