@@ -3,40 +3,43 @@ import java.util.ArrayList;
 import java.lang.String;
 import java.util.List;
 
+
 import GraphPack.*;
 
 public class Main {
-  
+   
     public static void main(String[] args){
 
+        
+        
         UndirectedGraph<String, Integer> graph = simpleGraph();
 
         /* Argument passing -g option is used to select a graph
            The default graph is the simpleGraph*/
-        if (args[0] == "-g"){
-            switch (args[1]) {
-                
-                case "1":
-                    System.out.println("Example 1: A simple graph has been chosen.");
-                    break;
+        if(args.length == 2){
+            
+            if ( args[0].equals("-g") ) {
 
-                case "2":
-                    graph = mediumGraph();
-                    System.out.println("Example 2: A medium level graph has been chosen.");
-                    break;
+                switch (Integer.parseInt(args[1])) {
+                    case 2:
 
-                case "3":
-                    graph = hardGraph();
-                    System.out.println("Example 3: A hard level graph has been chosen.");
-                    break;
+                        graph = mediumGraph();
+                        System.out.println("Example 2: A medium level graph has been chosen.");
+                        break;
 
-                default:
-                    System.out.println("Example 1: A simple graph has been chosen.");
-                    break;
+                    case 3:
+                        graph = hardGraph();
+                        System.out.println("Example 3: A hard level graph has been chosen.");
+                        break;
+
+                    default:
+                        System.out.println("Example 1: A simple graph has been chosen.");
+                        break;
+                }
             }
-
+            
         }else{
-            System.out.println("Example 1: Simple Graph has been chosen.");
+            System.out.println("Example 1: A simple Graph has been chosen.");
         }
         
         // store the two nodes inputted by the user and then display the answer
