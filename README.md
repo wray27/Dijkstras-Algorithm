@@ -1,6 +1,9 @@
 # Dijkstra's Algorithm
 
-![](./diagrams/AtoI.gif)
+<p align="center">
+  <img width="460" height="360" src="./diagrams/AtoI.gif">
+</p>
+
 
 ## Background
 
