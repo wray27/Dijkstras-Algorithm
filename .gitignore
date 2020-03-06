@@ -1,1 +1,3 @@
-/Source/Main.class
+src/*.class
+src/GraphPack/*.class
+.DS_Store
