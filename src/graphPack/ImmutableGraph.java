@@ -1,4 +1,4 @@
-package graphPack;
+package GraphPack;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.Objects;
  * @param <V> the type for {@link Node} values
  * @param <D> the type for {@link Edge} data
  */
-public abstract class ImmutableGraph<V, D> extends AbstractGraph<V, D>
+public final class ImmutableGraph<V, D> extends AbstractGraph<V, D>
 		implements
 		Graph<V, D>,
 		Serializable {
@@ -73,6 +73,20 @@ public abstract class ImmutableGraph<V, D> extends AbstractGraph<V, D>
 	@Override
 	public int size() {
 		return graph.size();
+	}
+
+	@Override
+	public Edge<V, D> getEdge(Node<V> source, Node<V> destination) {
+		Collection<Edge<V,D>> edges = getEdgesFrom(source);
+		Edge<V,D> edge = null;
+
+		for(Edge<V,D> temp : edges){
+			if(temp.destination().equals(destination)){
+				edge = temp;
+				break;
+			}
+		}
+		return edge;
 	}
 
 	@Override

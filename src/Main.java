@@ -1,8 +1,9 @@
-import GraphPack.*;
+
 import java.util.ArrayList;
 import java.lang.String;
-import java.util.Collection.*;
 import java.util.List;
+
+import GraphPack.*;
 
 public class Main {
   public static void main(String[] args){
@@ -13,7 +14,7 @@ public class Main {
   private static ArrayList<String> getUserInput(){
     
     // retrieves the name of the nodes from the user 
-    System.out.println("Please enter the name of the starting node:");
+    System.out.println("Please enter the name of the source node:");
     String sourceName = System.console().readLine();
     
     System.out.println("Please enter the name of the destination node:");
@@ -26,16 +27,16 @@ public class Main {
     
     return nodes;
   }
-  private static void displayAnswer(List<String> nodes, UndirectedGraph<String, Integer> graph){
+
+  private static void displayAnswer(ArrayList<String> nodes, UndirectedGraph<String, Integer> graph){
     
     // finds the node objects in the graph from the user input
     Node<String> source = graph.getNode(nodes.get(0));
     Node<String> destination = graph.getNode(nodes.get(1));
 
     // runs the dijkstras algortihm code to find shortest route and its cost 
-    int cost = -1;
-    cost = Dijkstras.shortestDistanceBetweenTwoNodes(graph, source, destination);
-    List<<Node<String>> routes = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
+    int cost = Dijkstras.shortestDistBetweenTwoNodes(graph, source, destination);
+    List<Node<String>> routes = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
    
     
   }
