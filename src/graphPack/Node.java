@@ -29,7 +29,7 @@ public final class Node<V> implements Serializable{
 		return distanceTravelled;
 	}
 	public void setDistanceTravelled(int distance){
-		distanceTravelled = distanceTravelled + distance;
+		this.distanceTravelled = distance;
 		
 	}
 	public List<Node<V>> getRouteOfNodes(){

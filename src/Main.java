@@ -6,8 +6,16 @@ import java.util.List;
 import GraphPack.*;
 
 public class Main {
+  
   public static void main(String[] args){
     
+
+    UndirectedGraph<String, Integer> graph = simpleGraph();
+    //System.out.println(graph.toString());
+
+    // ArrayList<String> nodes = getUserInput();
+    // displayAnswer(nodes, graph);
+
   }
 
   // function to retrive the user input of two strings from the terminal stored in a list
@@ -34,9 +42,18 @@ public class Main {
     Node<String> source = graph.getNode(nodes.get(0));
     Node<String> destination = graph.getNode(nodes.get(1));
 
-    // runs the dijkstras algortihm code to find shortest route and its cost 
+    // runs the dijkstras algorithm code to find shortest route and its cost
     int cost = Dijkstras.shortestDistBetweenTwoNodes(graph, source, destination);
-    List<Node<String>> routes = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
+    List<Node<String>> route = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
+
+    String printRoute = "";
+    for (Node<String> temp : route){
+      printRoute =  printRoute + temp.value();
+    }
+
+    System.out.println("The shortest route from " +  nodes.get(0) + " to " + nodes.get(1) + "is " + printRoute);
+
+    System.out.println("The cost of this Route is " + Integer.toString(cost));
    
     
   }
@@ -62,13 +79,13 @@ public class Main {
     graph.addNode(D);
 
     /* instatiating edges between nodes and adding them to the undirected graph */
-    Edge<String, Integer> aToB = new Edge<String, Integer>(A, B, 5);
+    Edge<String, Integer> aToB = new Edge<String, Integer>(A, B, 1);
     graph.addEdge(aToB);
     
-    Edge<String, Integer> bToD = new Edge<String, Integer>(B, D, 4);
+    Edge<String, Integer> bToD = new Edge<String, Integer>(B, D, 1);
     graph.addEdge(bToD);
     
-    Edge<String, Integer> dToC = new Edge<String, Integer>(D, C, 8);
+    Edge<String, Integer> dToC = new Edge<String, Integer>(D, C, 1);
     graph.addEdge(dToC);
     
     Edge<String, Integer> cToA = new Edge<String, Integer>(C, A, 1);
@@ -77,7 +94,17 @@ public class Main {
     Edge<String, Integer> aToD = new Edge<String, Integer>(A, D, 9);
     graph.addEdge(aToD);
 
-    return graph;
+
+    UndirectedGraph<String, Integer> finalGraph = new UndirectedGraph<String, Integer>(graph);
+//    System.out.println(finalGraph.getEdgesFrom(A));
+   int cost = Dijkstras.shortestDistBetweenTwoNodes(finalGraph, A, D);
+   List<Node<String>> route = Dijkstras.shortestRouteBetweenTwoNodes(finalGraph, A, D);
+   System.out.println(cost);
+   System.out.println(route);
+
+
+
+    return finalGraph;
   }
 
 

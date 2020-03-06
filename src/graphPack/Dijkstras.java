@@ -66,9 +66,9 @@ public class Dijkstras {
 
 	//this function is used to split up the code 
 	//finds the node with the smallest distance to travel to next
-	private static Node<String> extractNodeWithSmallestDist(List<Node<String>>  listOfNodes){
+	private static Node<String> extractNodeWithSmallestDist(List<Node<String>> listOfNodes){
 		
-		Node <String> bestNode = null;
+		Node <String> bestNode = new Node<String>("");
 		int lowestDist = Integer.MAX_VALUE;
 		
 		//loops through all the nodes in a given list
@@ -97,13 +97,13 @@ public class Dijkstras {
 		//take your time understanding this probably the most complex part
 		for (Node<String> tempNode : adjacentNodes){
 		
-			Edge<String,  Integer> edge = graph.getEdge(node, tempNode);
+			Edge<String, Integer> edge = graph.getEdge(node, tempNode);
 			cost = edge.Data();
 
-			if(tempNode.getDistanceTravelled() > tempNode.getDistanceTravelled() + cost){
-				//if the travelling to this node is shorter than the distance already
+			if(tempNode.getDistanceTravelled() > node.getDistanceTravelled() + cost){
+				//if travelling to this node is shorter than the distance already
 				//travelled to get to this node we want to update the distance travelled
-				tempNode.setDistanceTravelled(cost);
+				tempNode.setDistanceTravelled(node.getDistanceTravelled() + cost);
 				
 				//and we want to clear the previous shortest path to make a new one
 				tempNode.clearRouteOfNodes();
@@ -144,7 +144,7 @@ public class Dijkstras {
 	}
 	
 	//returns the shortest route between two nodes in the form of a list of nodes
-	public static List<Node<String>> shortestRouteBetweenTwoNodes(Graph<String, Integer> graph  ,Node<String> source,Node<String> destination){
+	public static List<Node<String>> shortestRouteBetweenTwoNodes(Graph<String, Integer> graph, Node<String> source,Node<String> destination){
 		computeDijkstrasAlgorithm(graph,source,destination);
 		return destination.getRouteOfNodes();
 	}
