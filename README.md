@@ -13,14 +13,14 @@ This repository contains an implementation of the algorithm written in Java runs
 
 ## Usage
 
-* To compile the code in this repository use the following commands 
+* To compile the code in this repository use the following commands:
 
 ```
 $ cd ./src
 $ javac ./Main.java ./GraphPack/*.java
 ```
 
-* To run the code in this repository use the following commands
+* To run the code in this repository use the following command:
 
 ```
 $ java Main
@@ -28,24 +28,26 @@ $ java Main
 
 * The code contains 3 Example graphs to use, to select a graph use the -g option followed by the example number of the graph you would like to use. Example 1: a simpleGraph is chosen by default.
 
+* To use Example 2 use the following command:
+
 ```
-$ java Main -g 1
+$ java Main -g 2
 ```
 ## Examples
 
-### Example1: simpleGraph
+### Example 1: simpleGraph
 
 <p align="left">
   <img width="300" height="250" src="./diagrams/simpleGraph.png">
 </p>
 
-### Example2: mediumGraph 
+### Example 2: mediumGraph 
 
 <p align="left">
   <img width="300" height="250" src="./diagrams/mediumGraph.png">
 </p>
 
-### Example3: hardGraph
+### Example 3: hardGraph
 
 <p align="left">
   <img width="360" height="250" src="./diagrams/hardGraph.png">
