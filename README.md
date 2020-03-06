@@ -11,6 +11,46 @@ In 1959 Edsger W. Dijkstra published a paper with an algorithm to solve the trav
 
 This repository contains an implementation of the algorithm written in Java runs in O(|N|^2) time and uses space O(|N| +2|E|).
 
+## Usage
+
+* To compile the code in this repository use the following commands 
+
+```
+$ cd ./src
+$ javac ./Main.java ./GraphPack/*.java
+```
+
+* To run the code in this repository use the following commands
+
+```
+$ java Main
+```
+
+* The code contains 3 Example graphs to use, to select a graph use the -g option followed by the example number of the graph you would like to use. Example 1: a simpleGraph is chosen by default.
+
+```
+$ java Main -g 1
+```
+## Examples
+
+### Example1: simpleGraph
+
+<p align="left">
+  <img width="360" height="250" src="./diagrams/simpleGraph.png">
+</p>
+
+### Example2: mediumGraph 
+
+<p align="left">
+  <img width="360" height="250" src="./diagrams/mediumGraph.png">
+</p>
+
+### Example3: hardGraph
+
+<p align="left">
+  <img width="360" height="250" src="./diagrams/hardGraph.png">
+</p>
+
 
 ## References
 
