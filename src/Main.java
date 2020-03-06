@@ -82,13 +82,13 @@ public class Main {
     Edge<String, Integer> aToB = new Edge<String, Integer>(A, B, 1);
     graph.addEdge(aToB);
     
-    Edge<String, Integer> bToD = new Edge<String, Integer>(B, D, 1);
+    Edge<String, Integer> bToD = new Edge<String, Integer>(B, D, 3);
     graph.addEdge(bToD);
     
     Edge<String, Integer> dToC = new Edge<String, Integer>(D, C, 1);
     graph.addEdge(dToC);
     
-    Edge<String, Integer> cToA = new Edge<String, Integer>(C, A, 1);
+    Edge<String, Integer> cToA = new Edge<String, Integer>(C, A, 2);
     graph.addEdge(cToA);
     
     Edge<String, Integer> aToD = new Edge<String, Integer>(A, D, 9);
