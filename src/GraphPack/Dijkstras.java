@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Dijkstras {
 	
-	/*--IMPORTANT-- Each  Node contains the shortest route/path to that particular node
+	/*--IMPORTANT-- Each node contains the shortest route/path to that particular node
 	 * and the distance of this route. Look at the changes to the Node Class to see
 	 * I have kept in line with encapsulation by using getters and setters and making all fields
 	 * private.

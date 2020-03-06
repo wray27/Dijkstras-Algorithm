@@ -3,26 +3,28 @@ import java.util.ArrayList;
 import java.lang.String;
 import java.util.List;
 
-
 import GraphPack.*;
+
+/*
+ This is test harness for GraphPack setting up 3 different graph examples to apply Dijkstras Algorithm.
+ Diagrams of the graphs can be found in ../diagrams directory
+ */
 
 public class Main {
    
     public static void main(String[] args){
 
-        
-        
+        // instantiating graph object 
         UndirectedGraph<String, Integer> graph = simpleGraph();
 
-        /* Argument passing -g option is used to select a graph
-           The default graph is the simpleGraph*/
+        /* argument passing -g option is used to select a graph
+           The default graph is the simpleGraph */
         if(args.length == 2){
             
-            if ( args[0].equals("-g") ) {
+            if (args[0].equals("-g")) {
 
                 switch (Integer.parseInt(args[1])) {
                     case 2:
-
                         graph = mediumGraph();
                         System.out.println("Example 2: A medium level graph has been chosen.");
                         break;
@@ -36,9 +38,9 @@ public class Main {
                         System.out.println("Example 1: A simple graph has been chosen.");
                         break;
                 }
-            }
-            
-        }else{
+            } 
+        }
+        else{
             System.out.println("Example 1: A simple Graph has been chosen.");
         }
         
@@ -48,9 +50,9 @@ public class Main {
 
     }
 
-    // function to retrive the user input of two strings from the terminal stored in a list
+    // retrieves the user input of two strings from the terminal stored in a list
     private static ArrayList<String> getUserInput(){
-        
+
         // retrieves the name of the nodes from the user 
         System.out.println("Please enter the name of the source node:");
         String sourceName = System.console().readLine();
@@ -66,6 +68,7 @@ public class Main {
         return nodes;
     }
 
+    // displays the answer for the a given graph and two nodes
     private static void displayAnswer(ArrayList<String> nodes, UndirectedGraph<String, Integer> graph){
         
         // finds the node objects in the graph from the user input
@@ -76,11 +79,11 @@ public class Main {
         int cost = Dijkstras.shortestDistBetweenTwoNodes(graph, source, destination);
         List<Node<String>> route = Dijkstras.shortestRouteBetweenTwoNodes(graph, source, destination);
 
-        // Creating the route in a printable format
+        // creating the route in a printable format
         String printRoute = "";
-        for (Node<String> temp : route){
-        printRoute =  printRoute + temp.value() + " → ";
-        }
+        for (Node<String> temp : route)
+            printRoute =  printRoute + temp.value() + " → ";
+        
         printRoute = printRoute + destination.value();
 
         // printing the shortest route and its distance to the console
@@ -108,7 +111,7 @@ public class Main {
         Node<String> D = new Node<String>("D");
         graph.addNode(D);
 
-        /* instatiating edges between nodes and adding them to the undirected graph */
+        // instatiating edges between nodes and adding them to the undirected graph 
         Edge<String, Integer> aToB = new Edge<String, Integer>(A, B, 1);
         graph.addEdge(aToB);
         Edge<String, Integer> bToD = new Edge<String, Integer>(B, D, 3);
@@ -129,7 +132,7 @@ public class Main {
         // instantiating a new undirected graph
         UndirectedGraph<String, Integer> graph = new UndirectedGraph<String, Integer>();
 
-        // instantiating nodes labelled A, B, C, D and adds them to the graph
+        // instantiating nodes labelled A, B, C, D, E, F and adds them to the graph
         Node<String> A = new Node<String>("A");
         graph.addNode(A);
         Node<String> B = new Node<String>("B");
@@ -168,7 +171,7 @@ public class Main {
         // instantiating a new undirected graph
         UndirectedGraph<String, Integer> graph = new UndirectedGraph<String, Integer>();
 
-        // instantiating nodes labelled A, B, C, D and adds them to the graph
+        // instantiating nodes labelled A, B, C, D, E, F, G, H, I and adds them to the graph
         Node<String> A = new Node<String>("A");
         graph.addNode(A);
         Node<String> B = new Node<String>("B");
@@ -218,8 +221,4 @@ public class Main {
 
         return graph;
     }
-
-
-
-
 }   
