@@ -5,7 +5,7 @@
 </p>
 
 
-## Background
+## Background Information
 
 In 1959 Edsger W. Dijkstra published a paper with an algorithm to solve the travelling salesman problem [[1]](#1). Given two nodes within an undirected graph (with non-negative weights) find the shortest distance between them.
 
